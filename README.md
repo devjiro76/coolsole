@@ -1,7 +1,9 @@
 # Coolsole
 
 ## Description
-console.log with cool-askii-faces
+Make your console output more pretty.  
+console.log with colored font & cool-askii-faces.  
+Funny face will say/inform/yell/shout with your message.
 
 ## Install
 ```
@@ -28,7 +30,8 @@ coolsole.error({1: "and Object", 2: "should be okay"});
 ![node](https://user-images.githubusercontent.com/25057349/41197782-e5d90122-6ca3-11e8-9d9c-ff37596b7602.png)
 
 ### browser
-![browser](https://user-images.githubusercontent.com/25057349/41197826-a20fffa8-6ca4-11e8-9895-e5798cdc3a05.png)
+![browser](https://user-images.githubusercontent.com/25057349/41199707-7ab21e32-6cd1-11e8-9f3a-6751049c4bdc.png)
+
 
 ## Author
 devjiro76@gmail.com

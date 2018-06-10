@@ -1,0 +1,36 @@
+{
+  "name": "coolsole",
+  "version": "0.0.3",
+  "description": "pretty console.log with cool-askii-faces",
+  "main": "src/index.js",
+  "scripts": {
+    "build": "browserify src/index.js | uglifyjs --compress > dist/coolsole.js",
+    "publish": "yarn build && npm publish",
+    "test": "node test.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/devjiro76/coolsole.git"
+  },
+  "keywords": [
+    "console",
+    "cool",
+    "colsole.log"
+  ],
+  "author": "devjiro76@gmail.com",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/devjiro76/coolsole/issues"
+  },
+  "homepage": "https://github.com/devjiro76/coolsole#readme",
+  "devDependencies": {
+    "browserify": "^16.2.2",
+    "uglify-es": "^3.3.9"
+  },
+  "dependencies": {
+    "cool-ascii-faces": "^1.3.4"
+  },
+  "files": [
+    "dist/coolsole.js"
+  ]
+}

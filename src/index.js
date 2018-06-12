@@ -104,18 +104,15 @@ function isNode() {
   return Object.prototype.toString.call(typeof process !== 'undefined' ? process : 0) === '[object process]';
 }
 
-if (global) {
-  global.coolsole = {
-    log: generate("log"),
-    warn: generate("warn"),
-    error: generate("error"),
-    info: generate("info")
-  };
-}
-
-module.exports = {
+const coolsole = {
   log: generate("log"),
   warn: generate("warn"),
   error: generate("error"),
   info: generate("info")
 };
+
+if (!isNode()) {
+  global.coolsole = coolsole;
+}
+
+module.exports = coolsole;

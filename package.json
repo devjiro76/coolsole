@@ -1,6 +1,6 @@
 {
   "name": "coolsole",
-  "version": "0.0.3",
+  "version": "0.0.4",
   "description": "pretty console.log with cool-askii-faces",
   "main": "src/index.js",
   "scripts": {
@@ -35,5 +35,6 @@
   },
   "files": [
     "dist/coolsole.js"
-  ]
+  ],
+  "unpkg": "dist/coolsole.js"
 }

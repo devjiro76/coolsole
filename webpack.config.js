@@ -6,7 +6,7 @@ const config = {
   entry: './index.js',
   output: {
     path: path.resolve(__dirname, 'dist'),
-    filename: 'bundle.coolsole.js'
+    filename: 'coolsole.bundle.js'
   },
   module: {
     rules: [{

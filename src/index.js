@@ -59,42 +59,18 @@
 
   function generate(type) {
     return function () {
-      const msg = Array.prototype.reduce.call(arguments, joinPrevCurr, '');
+      const consoleType = console[type] || console.log;
+      const fontColor = fillColor(type);
+      const resetColor = colors.Reset;
+      const say = makeSay(type);
 
-      printOut(msg, type);
+      if (ENV === "NODE") {
+        const coloredMsg = fillColor(type, msg);
+        consoleType.call(console, (0, _cool.default)(), say, fontColor, arguments, resetColor);
+      } else {
+        consoleType.call(console, (0, _cool.default)(), say, arguments);
+      }
     };
-  }
-
-  function makeMessage(param) {
-    if (getType(param) === "[object String]") {
-      return param;
-    } else if (getType(param) === "[object Array]") {
-      return param.reduce(joinPrevCurr, '');
-    } else {
-      return JSON.stringify(param);
-    }
-  }
-
-  function joinPrevCurr(prev, curr) {
-    const comma = prev ? ", " : "";
-    return prev + comma + makeMessage(curr);
-  }
-
-  function getType(obj) {
-    return Object.prototype.toString.call(obj);
-  }
-
-  function printOut(msg, type) {
-    const consoleType = console[type] || console.log;
-    const say = makeSay(type);
-
-    if (ENV === "NODE") {
-      const resetColor = colors['Reset'];
-      const coloredMsg = fillColor(type, msg);
-      consoleType((0, _cool.default)(), say, coloredMsg + resetColor);
-    } else {
-      consoleType((0, _cool.default)(), say, msg);
-    }
   }
 
   function makeSay(type) {
@@ -112,28 +88,25 @@
     return says;
   }
 
-  function fillColor(type, msg) {
-    let coloredMsg = "";
+  function fillColor(type) {
+    let color = "";
 
     if (type === "warn") {
-      coloredMsg = colors['FgYellow'] + msg;
+      color = colors['FgYellow'] + msg;
     } else if (type === "error") {
-      coloredMsg = colors['FgRed'] + msg;
+      color = colors['FgRed'] + msg;
     } else if (type === "info") {
-      coloredMsg = colors['FgGreen'] + msg;
+      color = colors['FgGreen'] + msg;
     } else {
-      coloredMsg = " " + msg;
+      color = " " + msg;
     }
-    coloredMsg += " ";
-    return coloredMsg;
+    return color;
   }
 
-  const coolsole = {
+  return {
     log: generate("log"),
     warn: generate("warn"),
     error: generate("error"),
     info: generate("info")
   };
-
-  return coolsole;
 });

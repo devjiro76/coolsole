@@ -1,13 +1,13 @@
 (function (global, factory) {
   if (typeof define === "function" && define.amd) {
     // AMD
-    define("coolsole", ["cool-ascii-faces"], factory);
+    define(["cool-ascii-faces"], factory);
   } else if (typeof module === 'object' && module.exports) {
     // Node
     module.exports = factory(require("cool-ascii-faces"));
   } else {
     // Browser
-    // window.coolsole = factory(global.cool);
+    global.coolsole = factory(global.cool);
   }
 })(this, function (cool) {
   "use strict";
@@ -58,16 +58,18 @@
   };
 
   function generate(type) {
-    return function () {
+    return function (...args) {
       const consoleType = console[type] || console.log;
       const fontColor = fillColor(type);
       const resetColor = colors.Reset;
       const say = makeSay(type);
 
+      const msg = args.length === 1 ? args[0] : args;
+
       if (ENV === "NODE") {
-        consoleType.call(console, (0, _cool.default)(), say, fontColor, arguments, resetColor);
+        consoleType.call(console, (0, _cool.default)(), say, fontColor, msg, resetColor);
       } else {
-        consoleType.call(console, (0, _cool.default)(), say, arguments);
+        consoleType.call(console, (0, _cool.default)(), say, msg);
       }
     };
   }
@@ -97,11 +99,8 @@
     } else if (type === "info") {
       color = colors['FgGreen'];
     }
-    
     return color;
   }
-
-  console.log("ENV: ", ENV);
 
   return {
     log: generate("log"),

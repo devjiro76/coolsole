@@ -1,6 +1,6 @@
 {
   "name": "coolsole",
-  "version": "0.0.6",
+  "version": "0.0.7",
   "description": "pretty console.log with cool-askii-faces",
   "main": "dist/coolsole.min.js",
   "scripts": {

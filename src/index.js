@@ -7,7 +7,7 @@
     module.exports = factory(require("cool-ascii-faces"));
   } else {
     // Browser
-    global.coolsole = factory(global.cool);
+    window.coolsole = factory(global.cool);
   }
 })(this, function (cool) {
   "use strict";

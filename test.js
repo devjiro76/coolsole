@@ -1,4 +1,4 @@
-const coolsole = require('./dist/coolsole.min.js');
+const coolsole = require('./src/index.js');
 
 coolsole.log("just String");
 coolsole.info("arrays", {1: "with", 2: "Object"});

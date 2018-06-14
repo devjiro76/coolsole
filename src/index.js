@@ -65,7 +65,6 @@
       const say = makeSay(type);
 
       if (ENV === "NODE") {
-        const coloredMsg = fillColor(type, msg);
         consoleType.call(console, (0, _cool.default)(), say, fontColor, arguments, resetColor);
       } else {
         consoleType.call(console, (0, _cool.default)(), say, arguments);
@@ -92,14 +91,13 @@
     let color = "";
 
     if (type === "warn") {
-      color = colors['FgYellow'] + msg;
+      color = colors['FgYellow'];
     } else if (type === "error") {
-      color = colors['FgRed'] + msg;
+      color = colors['FgRed'];
     } else if (type === "info") {
-      color = colors['FgGreen'] + msg;
-    } else {
-      color = " " + msg;
+      color = colors['FgGreen'];
     }
+    
     return color;
   }
 
